@@ -13,16 +13,17 @@ import { useForm } from "react-hook-form"
 import { SignupValidation } from "@/lib/validation"
 import { z } from "zod"
 import { Loader } from "lucide-react"
-import { createUserAccount } from "@/lib/appwrite/api"
+
 import { useCreateUserAccount, useSignInAccount } from "@/lib/react-query/queriesAndMutations"
 import { useUserContext } from "@/context/AuthContext"
 
 
 
 const SignupForm = () => {
-  const { toast } = useToast()
-  const {checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const { toast } = useToast();
   const navigate = useNavigate();
+  const {checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  
 
   const { mutateAsync: createUserAccount, isPending: 
     isCreatingAccount } = useCreateUserAccount();
